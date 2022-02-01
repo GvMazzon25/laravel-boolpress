@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    //Admin Homepage
+
     public function index(){
-        return 'DASHBOARD ADMIN HERE';
+        return view('home');
     }
 }

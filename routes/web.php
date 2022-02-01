@@ -25,10 +25,16 @@ Route::middleware('auth')
      ->namespace('Admin')
      ->name('admin.')
      ->prefix('admin')
-     ->group(function(){
+     ->group(function() {
          //Admin Homepage
-         Route::get('/home', 'HomeController@index')->name('home');
+         Route::get('/', 'HomeController@index')->name('home');
 
          //Post resource routes
      });
+
+
+
+
+
+
 
