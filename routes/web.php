@@ -29,9 +29,8 @@ Route::middleware('auth')
          //Admin Homepage
          Route::get('/', 'HomeController@index')->name('home');
 
-         Route::get('/', 'FilmController@index')->name('film');
-
          //Post resource routes
+         Route::get('/film', 'FilmController@index')->name('film');
      });
 
 

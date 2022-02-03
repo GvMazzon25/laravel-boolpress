@@ -10962,3 +10962,8 @@ a.text-dark:focus {
   }
 }
 
+.my-flex {
+  display: flex;
+  flex-direction: row;
+}
+
