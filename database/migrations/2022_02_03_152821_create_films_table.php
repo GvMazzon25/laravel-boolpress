@@ -18,7 +18,6 @@ class CreateFilmsTable extends Migration
             $table->string('name',100);
             $table->string('images',0);
             $table->string('cast',0);
-            $table->smallIntager('vote')->unsigned();
             $table->boolean('is_available')->default(1);
             $table->timestamps();
         });
