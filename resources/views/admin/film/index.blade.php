@@ -10,11 +10,21 @@
        <table class="table">
            <thead>
                <tr>
-                   <th></th>
+                   <th>ID</th>
+                   <th>TITLE</th>
+                   <th colspan="3">Actions</th>
                </tr>
            </thead>
            <tbody>
-
+               @foreach ($films as $film)
+                   <tr>
+                       <td>{{ $film->id}}</td>
+                       <td>{{ $film->title}}</td>
+                       <td><button type="button" class="btn btn-primary"><a href="">SHOW</a></button></td>
+                       <td><button type="button" class="btn btn-success">EDIT</button></td>
+                       <td><button type="button" class="btn btn-danger">DELETE</button></td>
+                   </tr>
+               @endforeach
            </tbody>
        </table>
    @endif
