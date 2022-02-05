@@ -30,7 +30,7 @@ Route::middleware('auth')
          Route::get('/', 'HomeController@index')->name('home');
 
          //Post resource routes
-         Route::get('/film', 'FilmController@index')->name('film');
+         Route::resource('/film', 'FilmController');
      });
 
 
