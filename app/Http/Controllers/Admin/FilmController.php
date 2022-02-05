@@ -17,7 +17,7 @@ class FilmController extends Controller
     {
         $films = Film::all();
 
-        return view('admin.films.index', compact('films'));
+        return view('admin.film.index', compact('films'));
     }
 
     /**
