@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+  <h1></h1>
     <ul class=" ">
         @foreach ($films as $film)
         <div class="card m-3" style="width: 18rem;">
