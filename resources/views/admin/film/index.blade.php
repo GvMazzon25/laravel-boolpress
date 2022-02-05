@@ -19,10 +19,10 @@
                @foreach ($films as $film)
                    <tr>
                        <td>{{ $film->id}}</td>
-                       <td>{{ $film->title}}</td>
-                       <td><button type="button" class="btn btn-primary"><a href="">SHOW</a></button></td>
-                       <td><button type="button" class="btn btn-success">EDIT</button></td>
-                       <td><button type="button" class="btn btn-danger">DELETE</button></td>
+                       <td>{{ $film->name}}</td>
+                       <td><button type="button" class="btn btn-primary"><a class="link-light" href="">SHOW</a></button></td>
+                       <td><button type="button" class="btn btn-success"><a class="link-light" href="">EDIT</a></button></td>
+                       <td><button type="button" class="btn btn-danger"><a class="link-light" href="">DELETE</a></button></td>
                    </tr>
                @endforeach
            </tbody>

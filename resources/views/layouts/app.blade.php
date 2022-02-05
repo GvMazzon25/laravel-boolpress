@@ -37,7 +37,11 @@
                             <a class="nav-link" target="_blank" href="{{ url('/') }}">Front Office</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{route('admin.film.index')}}">Film</a>
+                            <a class="nav-link 
+                                @if(Request::route()->getName() == 'admin.film.index') active @endif" 
+                                aria-current="page" href="{{route('admin.film.index')}}">
+                                Film
+                            </a>
                           </li>
                     </ul>
 
