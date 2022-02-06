@@ -20,9 +20,23 @@
                    <tr>
                        <td>{{ $film->id}}</td>
                        <td>{{ $film->name}}</td>
-                       <td><button type="button" class="btn btn-primary"><a class="link-light" href="">SHOW</a></button></td>
-                       <td><button type="button" class="btn btn-success"><a class="link-light" href="">EDIT</a></button></td>
-                       <td><button type="button" class="btn btn-danger"><a class="link-light" href="">DELETE</a></button></td>
+                       <td>
+                            <a class="btn bt-success" 
+                               href="{{route('admin.film.show', $film->id)}}">
+                                    SHOW
+                            </a>
+                       <td>
+                            <a class="btn bt-success" 
+                               href="{{route('admin.film.show', $film->id)}}">
+                                    EDIT
+                            </a>
+                       </td>
+                       <td>
+                            <a class="btn bt-success" 
+                               href="{{route('admin.film.show', $film->id)}}">
+                                    DELETE
+                            </a>
+                       </td>
                    </tr>
                @endforeach
            </tbody>

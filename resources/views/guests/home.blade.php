@@ -8,8 +8,25 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 </head>
 <body>
+    <div class="flex-center position-ref full-height">
+        @if (Route::has('login'))
+            <div class="top-right links">
+                @auth
+                    <a href="{{ route('admin.home') }}">Home</a>
+                @else
+                    <a href="{{ route('login') }}">Login</a>
 
-    <div id="root"></div>
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}">Register</a>
+                    @endif
+                @endauth
+            </div>
+        @endif
+    </div>    
+
+    <div id="root">
+
+    </div>
 
     <script src="{{asset('js/front-office.js')}}"></script>
 </body>
