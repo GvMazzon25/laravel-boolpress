@@ -30,7 +30,7 @@ Route::middleware('auth')
          Route::resource('/film', 'FilmController');
      });
 
-
+//Front Office
 Route::get('{any?}', function () {
     return view('guests.home');
 })->where('any','.*');
