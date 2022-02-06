@@ -13,14 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('guests.home');
-});
-
+//Rotte autenticazione
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
 
+//Rotte amministrazione
 Route::middleware('auth')
      ->namespace('Admin')
      ->name('admin.')
@@ -32,6 +29,14 @@ Route::middleware('auth')
          //Post resource routes
          Route::resource('/film', 'FilmController');
      });
+
+
+Route::get('{any?}', function () {
+    return view('guests.home');
+})->where('any','.*');
+
+
+
 
 
 
