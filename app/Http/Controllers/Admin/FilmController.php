@@ -49,7 +49,13 @@ class FilmController extends Controller
      */
     public function show($id)
     {
-        //
+        $films = Film::where('id', $id)->first();
+
+        if(! $id) {
+            abort(404);
+        }
+
+        return view('admin.film.show', compact('films'));
     }
 
     /**
