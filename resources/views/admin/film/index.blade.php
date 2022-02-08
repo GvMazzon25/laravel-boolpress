@@ -22,12 +22,12 @@
                        <td>{{ $film->name}}</td>
                        <td>
                             <a class="btn bt-success" 
-                               href="{{route('admin.film.show', $films->id)}}">
+                               href="{{route('admin.film.show', $film->id)}}">
                                     SHOW
                             </a>
                        <td>
                             <a class="btn bt-success" 
-                               href="{{route('admin.film.edit', $films->id)}}">
+                               href="{{route('admin.film.edit', $film->id)}}">
                                     EDIT
                             </a>
                        </td>
