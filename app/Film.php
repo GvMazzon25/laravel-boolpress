@@ -18,4 +18,10 @@ class Film extends Model
      * @var bool
      */
     public $incrementing = false;
+
+    protected $fillable = [
+        'name',
+        'images',
+        'cast',
+    ];
 }

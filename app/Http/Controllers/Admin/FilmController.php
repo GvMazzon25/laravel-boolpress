@@ -38,8 +38,37 @@ class FilmController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $rewuest->all();
-        dump($data);
+        //Validation
+        $request->validate([
+            'name' => 'required|max:255',
+            'images' => 'required',
+            'cast' => 'required'
+        ], [
+            'required' => 'The :attribute is a required field!',
+            'max' => 'Max N characters allowed for the :attribute'
+        ]);
+        
+        $data = $request->all();
+
+        //CREA NUOVO POST
+
+        $new_post = new Film();
+
+        $id = Str::id($data[1]);
+
+        $count = 1;
+
+        while(Film::where('id', $id)) {
+            $id += $count;
+            $count++;
+        }
+        $data['id'] = $id;
+
+        $new_post->fill($data);
+
+        $new_post->save();
+
+        return redirect()->route('admin.film.show', $new_post->id);
     }
 
     /**

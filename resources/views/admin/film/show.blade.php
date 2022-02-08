@@ -15,7 +15,7 @@
     <div class="card mb-3 m-auto" style="max-width: 540px;">
       <div class="row g-0">
         <div class="col-md-4">
-          <img src="{{$films->img}}" class="img-fluid rounded-start" alt="{{$films->name}}">
+          <img src="{{$films->images}}" class="img-fluid rounded-start" alt="{{$films->name}}">
         </div>
         <div class="col-md-8">
           <div class="card-body">
