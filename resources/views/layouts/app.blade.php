@@ -43,6 +43,13 @@
                                 Film
                             </a>
                           </li>
+                          <li class="nav-item">
+                            <a class="nav-link 
+                                @if(Request::route()->getName() == 'admin.film.create') active @endif" 
+                                aria-current="page" href="{{route('admin.film.create')}}">
+                                New Film
+                            </a>
+                          </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

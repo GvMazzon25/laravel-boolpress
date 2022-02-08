@@ -8,7 +8,7 @@
           <button type="button" class="btn btn-warning">EDIT</button>
         </a>
         <a class="btn bt-success" href="{{route('admin.film.index')}}">
-          <button type="button" class="btn btn-danger">ADD</button>
+          <button type="button" class="btn btn-danger">FILM</button>
         </a>
   </div> 
   <div>

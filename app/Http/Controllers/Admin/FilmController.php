@@ -27,7 +27,7 @@ class FilmController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.film.create');
     }
 
     /**
@@ -38,7 +38,8 @@ class FilmController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $rewuest->all();
+        dump($data);
     }
 
     /**
