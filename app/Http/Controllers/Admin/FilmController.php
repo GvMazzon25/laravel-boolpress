@@ -52,23 +52,19 @@ class FilmController extends Controller
 
         //CREA NUOVO POST
 
-        $new_post = new Film();
+        $new_film = new Film();
 
-        $id = Str::id($data[1]);
+        $id = rand(0,1000);
 
-        $count = 1;
+        echo $id;
 
-        while(Film::where('id', $id)) {
-            $id += $count;
-            $count++;
-        }
         $data['id'] = $id;
 
-        $new_post->fill($data);
+        $new_film->fill($data);
 
-        $new_post->save();
+        $new_film->save();
 
-        return redirect()->route('admin.film.show', $new_post->id);
+        return redirect()->route('admin.film.show', $new_film->id);
     }
 
     /**

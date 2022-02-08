@@ -21,6 +21,7 @@ class Film extends Model
 
     protected $fillable = [
         'name',
+        'id',
         'images',
         'cast',
     ];
