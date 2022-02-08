@@ -23,18 +23,18 @@
                        <td>
                             <a class="btn bt-success" 
                                href="{{route('admin.film.show', $film->id)}}">
-                                    SHOW
+                                     <button type="button" class="btn btn-primary">SHOW</button>
                             </a>
                        <td>
                             <a class="btn bt-success" 
                                href="{{route('admin.film.edit', $film->id)}}">
-                                    EDIT
+                                    <button type="button" class="btn btn-success">EDIT</button>
                             </a>
                        </td>
                        <td>
                             <a class="btn bt-success" 
                                href="{{}}">
-                                    DELETE
+                                    <button type="button" class="btn btn-danger">DELETE</button>
                             </a>
                        </td>
                    </tr>
