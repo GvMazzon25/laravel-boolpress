@@ -108,6 +108,11 @@ class FilmController extends Controller
         
         $data = $request->all();
         
+        $films = Film::find($id);
+
+        $films->update($data);
+
+        return redirect()->route('admin.film.show', $films->id);
     }
 
     /**
