@@ -39,14 +39,7 @@ class FilmController extends Controller
     public function store(Request $request)
     {
         //Validation
-        $request->validate([
-            'name' => 'required|max:255',
-            'images' => 'required',
-            'cast' => 'required'
-        ], [
-            'required' => 'The :attribute is a required field!',
-            'max' => 'Max N characters allowed for the :attribute'
-        ]);
+        $request->validate($this->validation_roules(), $this->validation_messages());
         
         $data = $request->all();
 
@@ -92,7 +85,13 @@ class FilmController extends Controller
      */
     public function edit($id)
     {
-        //
+        $films = Film::find($id);
+        
+        if(! $films){
+            abort(404);
+        }
+
+        return view('admin.film.edit', compact('films'));
     }
 
     /**
@@ -104,7 +103,11 @@ class FilmController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $request->validate($this->validation_roules(), $this->validation_messages());
+        
+        $data = $request->all();
+        
     }
 
     /**
@@ -117,4 +120,20 @@ class FilmController extends Controller
     {
         //
     }
+
+    private function validation_roules() {
+        return [
+            'name' => 'required|max:255',
+            'images' => 'required',
+            'cast' => 'required'
+        ];
+    }
+
+    private function validation_messages() {
+        return [
+            'required' => 'The :attribute is a required field!',
+            'max' => 'Max N characters allowed for the :attribute'
+        ];
+    }
+
 }

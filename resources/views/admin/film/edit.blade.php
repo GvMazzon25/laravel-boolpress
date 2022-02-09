@@ -2,8 +2,41 @@
 
 @section('content')
 <div class="container">
-  <h1>Blog Film</h1>
+  <h1 class="mb-5">Edit {{ $films->name }}</h1>
+
+  @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+  @endif
+
+   <form action="{{route('admin.film.update', $films->id)}}" method="POST">
+      @csrf
+      @method('PATCH')
+
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input class='form-control mb-3' type="text" name="name" id="name" value="{{ old('name', $films->name) }}">
+        @error('name')
+           <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+        <label for="images" class="form-label">Images</label>
+        <textarea class="form-control mb-3" name="images" id="images" rows="6">{{ old('images', $films->images) }}</textarea>
+        @error('images')
+           <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+        <label for="cast" class="form-label">Cast</label>
+        <textarea class="form-control mb-3" name="cast" id="cast" rows="6">{{ old('cast', $films->cast) }}</textarea>
+        @error('cast')
+           <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+        <button class="btn btn-success" type="submit">EDIT</button>
+      </div>
+   </form>
    
-  
 </div>
 @endsection
