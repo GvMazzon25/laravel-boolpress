@@ -4,6 +4,12 @@
 <div class="container">
   <h1>Blog Film</h1>
    
+  @if (session('status'))
+     <div class="alert alert-success">
+         {{ session('status') }}
+     </div>
+  @endif
+
    @if ($films->isEmpty())
        <p>No post found yet. <a href="{{ route('admin.film.create') }}">Create a new one</a></p>
    @else
@@ -32,10 +38,12 @@
                             </a>
                        </td>
                        <td>
-                            <a class="btn bt-success" 
-                               href="{{}}">
-                                    <button type="button" class="btn btn-danger">DELETE</button>
-                            </a>
+                            <form action="{{ route('admin.film.destroy', $post->id) }}" method="POST">
+                                  @csrf
+                                  @method('DELETE')
+
+                                  <input class="btn btn-danger" type="submit" value="DELETE"/>
+                            </form>
                        </td>
                    </tr>
                @endforeach
