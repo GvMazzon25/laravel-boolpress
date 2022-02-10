@@ -123,11 +123,11 @@ class FilmController extends Controller
      */
     public function destroy($id)
     {
-        $films = Post::find($id);
+        $films = Film::find($id);
 
         $films->delete();
 
-        return redirect()->route('admin.post.index')->with('deleted', $films);
+        return redirect()->route('admin.film.index')->with('deleted', $films->name);
     }
 
     private function validation_roules() {

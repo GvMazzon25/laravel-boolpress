@@ -4,9 +4,10 @@
 <div class="container">
   <h1>Blog Film</h1>
    
-  @if (session('status'))
+  @if (session('deleted'))
      <div class="alert alert-success">
-         {{ session('status') }}
+         <strong>{{ session('deleted') }}</strong>
+         deleted successfully.
      </div>
   @endif
 
@@ -38,11 +39,10 @@
                             </a>
                        </td>
                        <td>
-                            <form action="{{ route('admin.film.destroy', $post->id) }}" method="POST">
+                            <form action="{{ route('admin.film.destroy', $film->id) }}" method="POST">
                                   @csrf
                                   @method('DELETE')
-
-                                  <input class="btn btn-danger" type="submit" value="DELETE"/>
+                                  <input class="btn btn-danger mt-2" type="submit" value="DELETE"/>
                             </form>
                        </td>
                    </tr>
