@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Film;
+use App\Category;
 
 class FilmController extends Controller
 {
@@ -27,7 +28,9 @@ class FilmController extends Controller
      */
     public function create()
     {
-        return view('admin.film.create');
+        $categories = Category::all();
+
+        return view('admin.film.create', compact('categories'));
     }
 
     /**
@@ -86,12 +89,14 @@ class FilmController extends Controller
     public function edit($id)
     {
         $films = Film::find($id);
+
+        $categories = Category::all();
         
         if(! $films){
             abort(404);
         }
 
-        return view('admin.film.edit', compact('films'));
+        return view('admin.film.edit', compact('films','categories'));
     }
 
     /**
@@ -134,14 +139,17 @@ class FilmController extends Controller
         return [
             'name' => 'required|max:255',
             'images' => 'required',
-            'cast' => 'required'
+            'cast' => 'required',
+            'category_id' => 'nullable|exists:categories,id'
+
         ];
     }
 
     private function validation_messages() {
         return [
             'required' => 'The :attribute is a required field!',
-            'max' => 'Max N characters allowed for the :attribute'
+            'max' => 'Max N characters allowed for the :attribute',
+            'category_id.exist' => 'The selected category not exist',
         ];
     }
 

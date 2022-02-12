@@ -24,5 +24,12 @@ class Film extends Model
         'id',
         'images',
         'cast',
+        'category_id',
     ];
+
+    //Relation with Catecories  ---    films - categories 
+
+    public function category() {
+        return $this->belongsTo('App\Category');
+    }
 }

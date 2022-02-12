@@ -34,6 +34,23 @@
         @error('cast')
            <div class="alert alert-danger">{{ $message }}</div>
         @enderror
+
+        <div class="mb-3">
+         <label for="category_id">Category</label>
+         <select class="form-control" name="category_id" id="category_id">
+            <option value="">Uncategorized</option>
+            @foreach ($categories as $category)
+            <option value="{{$category->id}}"
+               @if ($category->id == old('category_id', $films->category_id)) selected @endif>
+               {{$category->name}}
+            </option>
+            @endforeach
+         </select>
+         @error('category_id')
+             <div class="alert alert-danger">{{ $message }}</div>
+         @enderror
+      </div>
+
         <button class="btn btn-success" type="submit">EDIT</button>
       </div>
    </form>

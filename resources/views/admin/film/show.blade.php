@@ -21,6 +21,7 @@
           <div class="card-body">
             <h5 class="card-title">{{$films->name}}</h5>
             <p class="card-text">{{$films->cast}}</p>
+            <p class="card-text">Category: {{$films->category->name}}</p>
             <p class="card-text"><small class="text-muted">
               @if($films->is_available == 1)
                   Is Available
