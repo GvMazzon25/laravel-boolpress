@@ -19,6 +19,7 @@
                <tr>
                    <th>ID</th>
                    <th>TITLE</th>
+                   <th>Category</th>
                    <th colspan="3">Actions</th>
                </tr>
            </thead>
@@ -27,6 +28,13 @@
                    <tr>
                        <td>{{ $film->id}}</td>
                        <td>{{ $film->name}}</td>
+                       <td>
+                           @if($film->category)
+                               <a href="{{ route('admin.category', $film->category->id)}}">{{ $film->category->name }}</a> 
+                           @else 
+                                Uncategorized
+                           @endif
+                       </td>
                        <td>
                             <a class="btn bt-success" 
                                href="{{route('admin.film.show', $film->id)}}">

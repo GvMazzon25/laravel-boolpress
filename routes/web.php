@@ -28,7 +28,10 @@ Route::middleware('auth')
 
          //Post resource routes
          Route::resource('/film', 'FilmController');
+
+         Route::get('/categories/{id}', 'CategoryController@show')->name('category');
      });
+
 
 //Front Office
 Route::get('{any?}', function () {
