@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 //test route
 
-Route::get('/language', function() {
+/*Route::get('/language', function() {
     return response()->json([
         'language'=> ['inglese', 'italiano', 'francese']
     ]);
-});
+});*/
 
 
 Route::namespace('Api')->group(function(){

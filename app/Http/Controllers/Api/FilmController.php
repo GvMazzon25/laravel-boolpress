@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Film;
 
-class PostController extends Controller
+class FilmController extends Controller
 {
     public function index(){
         $films = Film::all();
