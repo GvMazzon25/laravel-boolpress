@@ -19,7 +19,7 @@ class FilmController extends Controller
     {
         $films = Film::all();
         $categories = Category::all();
-
+        
         return view('admin.film.index', compact('films','categories'));
     }
 
@@ -64,8 +64,8 @@ class FilmController extends Controller
         $new_film->save();
 
         // SALVA IN PIVOT RELAZIONE TRA NUOVO POST CON TAG SELEZIONATI DALLA FORM
-        if(array_key_exist('tags', $data)){
-            $bew_film->tags()->attach($data['tags']);
+        if(array_key_exists('tags', $data)){
+            $new_film->tags()->attach($data['tags']);
         }
 
 
@@ -81,13 +81,13 @@ class FilmController extends Controller
     public function show($id)
     {
         $films = Film::where('id', $id)->first();
-        $tags = Tag::all();
+        
 
         if(! $id) {
             abort(404);
         }
 
-        return view('admin.film.show', compact('films','tags'));
+        return view('admin.film.show', compact('films'));
     }
 
     /**
@@ -101,12 +101,14 @@ class FilmController extends Controller
         $films = Film::find($id);
 
         $categories = Category::all();
+
+        $tags = Tag::all();
         
         if(! $films){
             abort(404);
         }
 
-        return view('admin.film.edit', compact('films','categories'));
+        return view('admin.film.edit', compact('films','categories','tags'));
     }
 
     /**
@@ -126,6 +128,15 @@ class FilmController extends Controller
         $films = Film::find($id);
 
         $films->update($data);
+
+        //UPDATE RELAZIONI PIVOT TRA POST AGGIORNATO E TAGS
+
+        if(array_key_exists('tags', $data)){
+            $films->tags()->sync($data['tags']);
+        } else{
+            //nessun tags della checkbox
+            $films->tags()->detach();
+        }
 
         return redirect()->route('admin.film.show', $films->id);
     }
@@ -151,7 +162,7 @@ class FilmController extends Controller
             'images' => 'required',
             'cast' => 'required',
             'category_id' => 'nullable|exists:categories,id',
-            'tags'=> 'nullable|exist:tags,id',
+            'tags'=> 'nullable|exists:tags,id',
         ];
     }
 

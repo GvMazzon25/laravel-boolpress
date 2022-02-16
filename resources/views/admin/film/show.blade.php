@@ -29,7 +29,7 @@
             </small></p>
             @if(! $films->tags->isEmpty())
                 <h4>Tags</h4>
-                @foreach ($film->tags as $tag)
+                @foreach ($films->tags as $tag)
                     <span class="badge badge-primary">
                       {{ $tag->name }}
                     </span>
