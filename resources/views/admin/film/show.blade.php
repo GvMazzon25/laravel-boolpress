@@ -27,6 +27,16 @@
                   Is Available
               @endif
             </small></p>
+            @if(! $films->tags->isEmpty())
+                <h4>Tags</h4>
+                @foreach ($film->tags as $tag)
+                    <span class="badge badge-primary">
+                      {{ $tag->name }}
+                    </span>
+                @endforeach
+            @else
+               <p>No tags for this post..</p>
+            @endif
           </div>
         </div>
       </div>

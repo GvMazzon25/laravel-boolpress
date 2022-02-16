@@ -33,7 +33,7 @@ class FilmController extends Controller
         $categories = Category::all();
         $tags = Tag::all();
 
-        return view('admin.film.create', compact('categories'));
+        return view('admin.film.create', compact('categories','tags'));
     }
 
     /**
@@ -63,6 +63,12 @@ class FilmController extends Controller
 
         $new_film->save();
 
+        // SALVA IN PIVOT RELAZIONE TRA NUOVO POST CON TAG SELEZIONATI DALLA FORM
+        if(array_key_exist('tags', $data)){
+            $bew_film->tags()->attach($data['tags']);
+        }
+
+
         return redirect()->route('admin.film.show', $new_film->id);
     }
 
@@ -75,12 +81,13 @@ class FilmController extends Controller
     public function show($id)
     {
         $films = Film::where('id', $id)->first();
+        $tags = Tag::all();
 
         if(! $id) {
             abort(404);
         }
 
-        return view('admin.film.show', compact('films'));
+        return view('admin.film.show', compact('films','tags'));
     }
 
     /**
@@ -143,8 +150,8 @@ class FilmController extends Controller
             'name' => 'required|max:255',
             'images' => 'required',
             'cast' => 'required',
-            'category_id' => 'nullable|exists:categories,id'
-
+            'category_id' => 'nullable|exists:categories,id',
+            'tags'=> 'nullable|exist:tags,id',
         ];
     }
 
