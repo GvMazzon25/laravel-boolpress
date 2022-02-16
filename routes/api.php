@@ -14,6 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+//test route
+
+Route::get('/language', function() {
+    return response()->json([
+        'language'=> ['inglese', 'italiano', 'francese']
+    ]);
+});
+
+
+Route::namespace('Api')->group(function(){
+    Route::get('/film','FilmController@index');
 });

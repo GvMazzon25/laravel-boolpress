@@ -153,6 +153,9 @@ class FilmController extends Controller
 
         $films->delete();
 
+        //pulizia relazioni con ID post cancellato
+        //$films->tags()->detach();
+
         return redirect()->route('admin.film.index')->with('deleted', $films->name);
     }
 
