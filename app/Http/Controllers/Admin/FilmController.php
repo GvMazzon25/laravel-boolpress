@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Film;
 use App\Category;
+use App\Tag;
 
 class FilmController extends Controller
 {
@@ -30,6 +31,7 @@ class FilmController extends Controller
     public function create()
     {
         $categories = Category::all();
+        $tags = Tag::all();
 
         return view('admin.film.create', compact('categories'));
     }

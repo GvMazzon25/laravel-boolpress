@@ -32,4 +32,10 @@ class Film extends Model
     public function category() {
         return $this->belongsTo('App\Category');
     }
+
+    //Relation with Tag  ---    films - tags
+
+    public function tags(){
+        return $this->belongsToMany('App\Tag');
+    }
 }
