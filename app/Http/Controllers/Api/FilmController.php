@@ -9,7 +9,7 @@ use App\Film;
 class FilmController extends Controller
 {
     public function index(){
-        $films = Film::all();
+        $films = Film::paginate(3);
 
         return response()->json($films);
     }
