@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use App\Film;
 use App\Category;
 use App\Tag;
@@ -48,6 +50,14 @@ class FilmController extends Controller
         $request->validate($this->validation_roules(), $this->validation_messages());
         
         $data = $request->all();
+
+        //dd($data);
+
+        if(array_key_exists('cover',$data)){
+            //salva immagine in storage
+            $img_path = Storage::put('films-cover', $data['cover']);
+            $data['cover'] = $img_path;
+        }
 
         //CREA NUOVO POST
 
@@ -166,6 +176,8 @@ class FilmController extends Controller
             'cast' => 'required',
             'category_id' => 'nullable|exists:categories,id',
             'tags'=> 'nullable|exists:tags,id',
+            'cover' => 'nullable|file|mimes:jpg,bmp,png'
+            
         ];
     }
 

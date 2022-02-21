@@ -15,7 +15,9 @@
     <div class="card mb-3 m-auto" style="max-width: 540px;">
       <div class="row g-0">
         <div class="col-md-4">
-          <img src="{{$films->images}}" class="img-fluid rounded-start" alt="{{$films->name}}">
+          @if($films->cover)
+          <img src="{{ asset('storage/' . $films->cover)}}" class="img-fluid" alt="{{$films->name}}">
+          @endif
         </div>
         <div class="col-md-8">
           <div class="card-body">

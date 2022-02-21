@@ -25,6 +25,7 @@ class Film extends Model
         'images',
         'cast',
         'category_id',
+        'cover',
     ];
 
     //Relation with Catecories  ---    films - categories 

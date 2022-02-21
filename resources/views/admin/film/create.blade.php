@@ -14,7 +14,7 @@
      </div>
    @endif
  
-    <form action="{{route('admin.film.store')}}" method="POST">
+    <form action="{{route('admin.film.store')}}" method="POST" enctype="multipart/form-data">
        @csrf
  
        <div class="mb-3">
@@ -33,6 +33,15 @@
          @error('cast')
             <div class="alert alert-danger">{{ $message }}</div>
          @enderror
+
+         <div class="mb-4">
+            <label class="form-label" for="cover"></label>
+            <input type="file" class="form-control-file" name="cover" id="cover">
+         </div>
+         @error('cover')
+            <div class="alert alert-danger">{{ $message }}</div>
+         @enderror
+
 
          <div class="mb-3">
             <label for="category_id">Category</label>
